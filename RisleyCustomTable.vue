@@ -137,7 +137,11 @@
         v-if="item.isShow"
         :show-overflow-tooltip="item.tooltip"
       >
+        <template #default="scope" v-if="item.slot">
+          <slot :name="item.slot" :row="scope.row"></slot>
+        </template>
       </el-table-column>
+
       <el-table-column
         label="操作"
         v-if="specialcol ? specialcol.indexOf('operate') > -1 : false"
